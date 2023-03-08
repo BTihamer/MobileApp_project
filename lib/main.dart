@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.deepPurple,
 
             ),
-            home:const SignInScreen(),
+            home:const WelcomeScreen(),
           );
         }
       );
