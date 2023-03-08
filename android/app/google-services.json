@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "384155691085",
+    "project_id": "gymfirebase-db920",
+    "storage_bucket": "gymfirebase-db920.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384155691085:android:31f21285f2528f919d5404",
+        "android_client_info": {
+          "package_name": "com.example.edzoteremappv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384155691085-m6pfgqh12188qkfmofn6bvndni895qaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTZs8KCESAV3wofeFla8cblOYMEKwKeJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384155691085-m6pfgqh12188qkfmofn6bvndni895qaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
