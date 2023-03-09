@@ -24,53 +24,55 @@ class _SignUpScreenState extends State<SignUpScreen>{
             color: Colors.white,
           ),
         ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(bottom: 30),
-                child: Text(
-                  "SignUp",
-                  style: TextStyle(color: Colors.deepPurple, fontSize: 30),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top:100,bottom: 30),
+                  child: Text(
+                    "SignUp",
+                    style: TextStyle(color: Colors.deepPurple, fontSize: 30),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: LabelTextFormField(
-                    myController: email,
-                    name : "EmailTextForm",
-                    obscure:false,
-                    width: MediaQuery.of(context).size.width / 1.25,
-                    label: "Email"),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: LabelTextFormField(
-                    myController: password,
-                    name : "PasswordTextForm",
-                    obscure: true,
-                    width: MediaQuery.of(context).size.width / 1.25,
-                    label: "Password"),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: LabelTextFormField(
-                    myController: confirmPassword,
-                    name : "ConfrimPasswordTextForm",
-                    obscure: true,
-                    width: MediaQuery.of(context).size.width / 1.25,
-                    label: "Confrim Password"),
-              ),
-              ElevatedButton(onPressed: (){
-                if(password.text==confirmPassword.text){
-                  signUp();
-                  Navigator.pop(context);
-                }
-              },
-                  child: const Text("SignUp")),
-            ]
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: LabelTextFormField(
+                      myController: email,
+                      name : "EmailTextForm",
+                      obscure:false,
+                      width: MediaQuery.of(context).size.width / 1.25,
+                      label: "Email"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: LabelTextFormField(
+                      myController: password,
+                      name : "PasswordTextForm",
+                      obscure: true,
+                      width: MediaQuery.of(context).size.width / 1.25,
+                      label: "Password"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: LabelTextFormField(
+                      myController: confirmPassword,
+                      name : "ConfrimPasswordTextForm",
+                      obscure: true,
+                      width: MediaQuery.of(context).size.width / 1.25,
+                      label: "Confrim Password"),
+                ),
+                ElevatedButton(onPressed: (){
+                  if(password.text==confirmPassword.text){
+                    signUp();
+                    Navigator.pop(context);
+                  }
+                },
+                    child: const Text("SignUp")),
+              ]
+            ),
           ),
         ),
       ),
