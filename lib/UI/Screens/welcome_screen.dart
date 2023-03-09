@@ -97,6 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             onPressed: () {
                               szamlalo++;
                               if (szamlalo == 4) {
+                                Navigator.pop(context);
                                 Navigator.of(context).push(_createRoute());
                               }
                               else if(szamlalo==3){
