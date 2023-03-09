@@ -1,7 +1,6 @@
-import 'package:edzoteremappv2/UI/Screens/SignInScreen.dart';
+import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,8 +9,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage>{
-  @override
   int currentIndex=0;
+  @override
   Widget build(BuildContext context) {
     final user= FirebaseAuth.instance.currentUser!;
     final PageController controller= PageController();
@@ -20,10 +19,11 @@ class _HomePageState extends State<HomePage>{
       "https://images.squarespace-cdn.com/content/v1/5e81f296eca8656d4cc7f9ac/1625218190083-45ABEW5ZJG5BIZRCS5O6/SwiftGym036_sr.jpg?format=2500w",
       "https://www.hussle.com/blog/wp-content/uploads/2020/12/Gym-structure-1080x675.png"
     ];
+    String helloszoveg='Hello '+user.email!+'!';
     return Scaffold(
         appBar: AppBar(
           centerTitle:true,
-          title: Text('Hello '+user.email!+"!"),
+          title: Text(helloszoveg),
           backgroundColor: Colors.deepPurple,
         ),
         body: Center(

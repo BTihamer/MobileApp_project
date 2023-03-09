@@ -1,4 +1,4 @@
-import 'package:edzoteremappv2/UI/Screens/SignInScreen.dart';
+import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -34,6 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   ];
   String next = "NEXT";
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -59,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Text(
                     cim,
                     textAlign: TextAlign.left,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
@@ -73,7 +74,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Text(
                     szoveg,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: const TextStyle(fontSize: 15, color: Colors.white),
                   ),
                 ),
               ),
@@ -120,7 +121,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                     RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         side:
-                                        BorderSide(color: Colors.black)))),
+                                        const BorderSide(color: Colors.black)))),
                             child: Text(next)),
                       ),
                     ),

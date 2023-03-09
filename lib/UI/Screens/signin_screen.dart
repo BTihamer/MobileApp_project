@@ -1,11 +1,10 @@
-import 'package:edzoteremappv2/UI/Screens/ForgotPasswordScreen.dart';
-import 'package:edzoteremappv2/UI/Screens/HomePage.dart';
-import 'package:edzoteremappv2/UI/Label/LabelTextFormField.dart';
-import 'package:edzoteremappv2/UI/Screens/SignUpScreen.dart';
+import 'package:edzoteremappv2/UI/Screens/forgot_password_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/home_page_screen.dart';
+import 'package:edzoteremappv2/UI/Label/label_text_form_field.dart';
+import 'package:edzoteremappv2/UI/Screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:edzoteremappv2/firebase_options.dart';
+
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -14,11 +13,15 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 class _SignInScreenState extends State<SignInScreen>{
-  @override
+
   final navigatorKey=GlobalKey<NavigatorState>();
   final email=TextEditingController();
   final password=TextEditingController();
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final snackBar = const SnackBar(
+    content: Text('Something went wrong!'),
+  );
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -59,10 +62,7 @@ class _SignInScreenState extends State<SignInScreen>{
               ElevatedButton(onPressed: ()async{
                 await signIn();
                 if(FirebaseAuth.instance.currentUser!=null){
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
+                  login();
                 }
                 else{
                   openDialog();
@@ -94,12 +94,12 @@ class _SignInScreenState extends State<SignInScreen>{
   Future openDialog() => showDialog(
     context: context,
     builder: (contex)=> AlertDialog(
-      title: Text('Wrong email/password'),
-      content: Text('Please make sure you email and password are correct!'),
+      title: const Text('Wrong email/password'),
+      content: const Text('Please make sure you email and password are correct!'),
       actions: [
         TextButton(onPressed: (){
           Navigator.of(context).pop();
-        }, child: Text('OK'))
+        }, child: const Text('OK'))
       ],
     ),
   );
@@ -112,9 +112,19 @@ class _SignInScreenState extends State<SignInScreen>{
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email.text.trim(), password: password.text.trim());
     }on FirebaseAuthException catch (e){
-      print(e);
+      //print(e);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+    popscreen();
+  }
+  void popscreen(){
     Navigator.pop(context);
+  }
+  void login(){
+    Navigator.pop(context);
+    Navigator.push(context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
   }
 }
 

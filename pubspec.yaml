@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^4.2.9
   carousel_slider: ^4.0.0
   sizer: ^2.0.15
+  get:
 
 dev_dependencies:
   flutter_test:

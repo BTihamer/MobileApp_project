@@ -1,7 +1,5 @@
-import 'package:edzoteremappv2/UI/Screens/HomePage.dart';
-import 'package:edzoteremappv2/UI/Label/LabelTextFormField.dart';
-import 'package:edzoteremappv2/UI/Screens/SignInScreen.dart';
-import 'package:edzoteremappv2/UI/Screens/WelcomeScreen.dart';
+import 'package:edzoteremappv2/UI/Screens/home_page_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

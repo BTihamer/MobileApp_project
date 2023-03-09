@@ -1,6 +1,4 @@
-import 'dart:ui';
-
-import 'package:edzoteremappv2/UI/Label/LabelTextFormField.dart';
+import 'package:edzoteremappv2/UI/Label/label_text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,16 +9,18 @@ class SignUpScreen extends StatefulWidget {
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 class _SignUpScreenState extends State<SignUpScreen>{
-  @override
+
   final navigatorKey=GlobalKey<NavigatorState>();
   final email=TextEditingController();
   final password=TextEditingController();
-  final Confirm_password=TextEditingController();
+  final confirmPassword=TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.deepPurple,
-          leading: BackButton(
+          leading: const BackButton(
             color: Colors.white,
           ),
         ),
@@ -57,14 +57,14 @@ class _SignUpScreenState extends State<SignUpScreen>{
               Padding(
                 padding: const EdgeInsets.only(bottom: 15),
                 child: LabelTextFormField(
-                    myController: Confirm_password,
+                    myController: confirmPassword,
                     name : "ConfrimPasswordTextForm",
                     obscure: true,
                     width: MediaQuery.of(context).size.width / 1.25,
                     label: "Confrim Password"),
               ),
               ElevatedButton(onPressed: (){
-                if(password.text==Confirm_password.text){
+                if(password.text==confirmPassword.text){
                   signUp();
                   Navigator.pop(context);
                 }
