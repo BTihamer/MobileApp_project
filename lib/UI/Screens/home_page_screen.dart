@@ -1,6 +1,7 @@
 import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,18 +27,124 @@ class _HomePageState extends State<HomePage>{
           title: Text(helloszoveg),
           backgroundColor: Colors.deepPurple,
         ),
+        drawer: Drawer(
+          backgroundColor: Colors.white,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SizedBox(
+                height: 15.h,
+
+                child: DrawerHeader(
+                  decoration: const BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius:  BorderRadius.only(bottomLeft: Radius.circular(8),bottomRight: Radius.circular(8)),
+                      boxShadow: [BoxShadow(color: Colors.deepPurple, blurRadius: 50)]
+                  ),
+                  child: Text('Hello,\n'+user.email.toString()+'!',
+                  style:const TextStyle(fontSize: 20,
+                      fontStyle: FontStyle.italic
+                  ),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading:const Icon(Icons.account_circle),
+                title: const Text('Profil',
+                  style: TextStyle(
+                    fontSize: 15,
+                      fontStyle: FontStyle.italic
+                  ),
+                ),
+                dense: true,
+                  visualDensity: VisualDensity(vertical: 3),
+                onTap: () {},
+              ),
+              ListTile(
+                leading:const Icon(Icons.settings),
+                title: const Text('Personal Info',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic
+                  ),
+                ),
+                dense: true,
+                visualDensity: VisualDensity(vertical: 3),
+                onTap: () {},
+              ),
+              ListTile(
+                leading:const Icon(Icons.history),
+                title: const Text('Payments History',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic
+                  ),
+                ),
+                dense: true,
+                visualDensity: VisualDensity(vertical: 3),
+                onTap: () {},
+              ),
+              ListTile(
+                leading:const Icon(Icons.password_rounded),
+                title: const Text('Change Password',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic
+                  ),
+                ),
+                dense: true,
+                visualDensity: VisualDensity(vertical: 3),
+                onTap: () {},
+              ),
+              Expanded(
+                child:Column(
+                  children:const <Widget>[
+                    Divider(
+                        color: Colors.black
+                    )
+                  ],
+                ),
+              ),
+              ListTile(
+                  leading:const Icon(Icons.logout),
+                title: const Text('SignOut',
+                    style: TextStyle(
+                    fontSize: 15,
+                        fontStyle: FontStyle.italic
+                )
+                ),
+                dense: true,
+                visualDensity: VisualDensity(vertical: 3),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const SignInScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading:const Icon(Icons.question_mark_rounded),
+                title: const Text('About',
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontStyle: FontStyle.italic
+                    )
+                ),
+                dense: true,
+                visualDensity: VisualDensity(vertical: 3),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
         body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(onPressed: (){
-                   FirebaseAuth.instance.signOut();
-                   Navigator.pop(context);
-                   Navigator.push(context,
-                     MaterialPageRoute(builder: (context) => const SignInScreen()),
-                   );
-                  },
-                      child: const Text("SignOut")),
                   SizedBox(
                     width: 350.0,
                     height: 250.0,
@@ -91,20 +198,3 @@ class _HomePageState extends State<HomePage>{
     );
   }
 }
-
-/*class NavigationDrawer extends StatelessWidget{
-  const NavigationDrawer({Key? key}): super(key: key)
-
-  @override
-  Widget build(BuildContext context) => Drawer(
-    child: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          buildHeader(context),
-          buildMen
-        ],
-      ),
-    ),
-  );
-}*/
