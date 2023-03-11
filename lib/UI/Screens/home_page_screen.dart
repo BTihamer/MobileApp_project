@@ -1,3 +1,7 @@
+import 'package:edzoteremappv2/UI/Screens/about_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/payment_history_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/profil_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/change_password_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +62,12 @@ class _HomePageState extends State<HomePage>{
                 ),
                 dense: true,
                   visualDensity: VisualDensity(vertical: 3),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const ProfilScreen()),
+                  );
+                },
               ),
               ListTile(
                 leading:const Icon(Icons.settings),
@@ -82,7 +91,12 @@ class _HomePageState extends State<HomePage>{
                 ),
                 dense: true,
                 visualDensity: VisualDensity(vertical: 3),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const PaymentHistory()),
+                  );
+                },
               ),
               ListTile(
                 leading:const Icon(Icons.password_rounded),
@@ -94,7 +108,12 @@ class _HomePageState extends State<HomePage>{
                 ),
                 dense: true,
                 visualDensity: VisualDensity(vertical: 3),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const ChangePasswordScreen()),
+                  );
+                },
               ),
               Expanded(
                 child:Column(
@@ -136,6 +155,9 @@ class _HomePageState extends State<HomePage>{
                 visualDensity: VisualDensity(vertical: 3),
                 onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AboutScreen()),
+                  );
                 },
               ),
             ],
