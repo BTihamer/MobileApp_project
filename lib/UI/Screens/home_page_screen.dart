@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage>{
                   ),
                 ),
                 dense: true,
-                  visualDensity: VisualDensity(vertical: 3),
+                  visualDensity: const VisualDensity(vertical: 3),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(context,
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage>{
                   ),
                 ),
                 dense: true,
-                visualDensity: VisualDensity(vertical: 3),
+                visualDensity: const VisualDensity(vertical: 3),
                 onTap: () {},
               ),
               ListTile(
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage>{
                   ),
                 ),
                 dense: true,
-                visualDensity: VisualDensity(vertical: 3),
+                visualDensity: const VisualDensity(vertical: 3),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(context,
@@ -107,22 +107,13 @@ class _HomePageState extends State<HomePage>{
                   ),
                 ),
                 dense: true,
-                visualDensity: VisualDensity(vertical: 3),
+                visualDensity: const VisualDensity(vertical: 3),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const ChangePasswordScreen()),
                   );
                 },
-              ),
-              Expanded(
-                child:Column(
-                  children:const <Widget>[
-                    Divider(
-                        color: Colors.black
-                    )
-                  ],
-                ),
               ),
               ListTile(
                   leading:const Icon(Icons.logout),
