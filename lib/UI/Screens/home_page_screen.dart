@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage>{
                 mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left:13.sp),
+                      padding: EdgeInsets.only(left:13.sp,top: 10.sp),
                       child: const Align(
                         alignment: Alignment.topLeft,
                           child: Text(
