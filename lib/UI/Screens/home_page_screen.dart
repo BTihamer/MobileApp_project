@@ -38,7 +38,6 @@ class _HomePageState extends State<HomePage>{
             children: [
               SizedBox(
                 height: 15.h,
-
                 child: DrawerHeader(
                   decoration: const BoxDecoration(
                     color: Colors.deepPurple,
@@ -133,7 +132,7 @@ class _HomePageState extends State<HomePage>{
                     MaterialPageRoute(builder: (context) => const SignInScreen()),
                   );
                 },
-              ),
+              ),//ListTile SignOut Gomb
               ListTile(
                 leading:const Icon(Icons.question_mark_rounded),
                 title: const Text('About',
@@ -150,49 +149,330 @@ class _HomePageState extends State<HomePage>{
                     MaterialPageRoute(builder: (context) => const AboutScreen()),
                   );
                 },
-              ),
+              ),//ListTile About Gomb
             ],
           ),
         ),
-        body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 350.0,
-                    height: 250.0,
-                    child: PageView.builder(
-                      controller: controller,
-                      onPageChanged: (index){
-                        setState(() {
-                          currentIndex = index.toInt() % images.length.toInt();
-                        });
-                      },
-                        itemBuilder:(context,index){
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 1),
-                            child: SizedBox(
-                              height: 350,
-                              width: double.infinity,
-                              child: Image.network(
-                                  images[index%images.length],
-                                  fit: BoxFit.cover,
+        body: SingleChildScrollView(
+          child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left:13.sp),
+                      child: const Align(
+                        alignment: Alignment.topLeft,
+                          child: Text(
+                            "CLUB ACCES",style: TextStyle(fontSize: 20),)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10.sp),
+                      child: Container(
+                        height: 14.h,
+                        width: 95.w,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.deepPurple),
+                            color: Colors.white70,
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(10))),
+                        child: Row(
+                          children: [
+                            Column(
+                              children: [
+                                Align(
+                                  alignment:Alignment.topLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                  child: Container(
+                                  height: 8.h,
+                                  width: 15.w,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.deepPurple),
+                                      color: Colors.deepPurple,
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                                    child: IconButton(
+                                      icon: Icon(Icons.qr_code),
+                                      onPressed: (){},
+                                    ),
+                                  ),
+                                ),
+                          ),
+                                Text("Member\ncard",textAlign: TextAlign.center)
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left:6.sp),
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment:Alignment.topLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                      child: Container(
+                                        height: 8.h,
+                                        width: 15.w,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.deepPurple),
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(10))),
+                                        child: IconButton(
+                                          icon: Icon(Icons.info_outline_rounded),
+                                          onPressed: (){},
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text("Capacity\nStatus",textAlign: TextAlign.center)
+                                ],
                               ),
                             ),
-                          );
-                        }
+                            Padding(
+                              padding: EdgeInsets.only(left:6.sp),
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment:Alignment.topLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                      child: Container(
+                                        height: 8.h,
+                                        width: 15.w,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.deepPurple),
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(10))),
+                                        child: IconButton(
+                                          icon: const Icon(Icons.location_on_outlined),
+                                          onPressed: (){},
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Text("Club\ninfo",textAlign: TextAlign.center)
+                                ],
+                              ),
+                            ),
+                          ]
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left:13.sp),
+                      child: const Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "YOUR SERVICES",style: TextStyle(fontSize: 20),)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10.sp),
+                      child: Container(
+                        height: 14.h,
+                        width: 95.w,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.deepPurple),
+                            color: Colors.white70,
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(10))),
+                        child: Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Align(
+                                    alignment:Alignment.topLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                      child: Container(
+                                        height: 8.h,
+                                        width: 15.w,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.deepPurple),
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(10))),
+                                        child: IconButton(
+                                          icon: Icon(Icons.card_membership),
+                                          onPressed: (){},
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text("Buy\nMembership",textAlign: TextAlign.center)
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left:6.sp),
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment:Alignment.topLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                        child: Container(
+                                          height: 8.h,
+                                          width: 15.w,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.deepPurple),
+                                              color: Colors.deepPurple,
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(10))),
+                                          child: IconButton(
+                                            icon: Icon(Icons.card_membership_sharp),
+                                            onPressed: (){},
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text("Your\nMembership",textAlign: TextAlign.center)
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left:6.sp),
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment:Alignment.topLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                        child: Container(
+                                          height: 8.h,
+                                          width: 15.w,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.deepPurple),
+                                              color: Colors.deepPurple,
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(10))),
+                                          child: IconButton(
+                                            icon: const Icon(Icons.location_on_outlined),
+                                            onPressed: (){},
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const Text("Activate\nVoucher",textAlign: TextAlign.center)
+                                  ],
+                                ),
+                              ),
+                            ]
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left:13.sp),
+                      child: const Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "PEROSNAL TRAINING",style: TextStyle(fontSize: 20),)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10.sp),
+                      child: Container(
+                        height: 14.h,
+                        width: 95.w,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.deepPurple),
+                            color: Colors.white70,
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(10))),
+                        child: Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Align(
+                                    alignment:Alignment.topLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                      child: Container(
+                                        height: 8.h,
+                                        width: 15.w,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.deepPurple),
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(10))),
+                                        child: IconButton(
+                                          icon: Icon(Icons.person_3_rounded),
+                                          onPressed: (){},
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text("Our\nTrainers",textAlign: TextAlign.center)
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left:6.sp),
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment:Alignment.topLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 5.sp,top: 5),
+                                        child: Container(
+                                          height: 8.h,
+                                          width: 15.w,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.deepPurple),
+                                              color: Colors.deepPurple,
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(10))),
+                                          child: IconButton(
+                                            icon: Icon(Icons.access_time_outlined),
+                                            onPressed: (){},
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text("PT\nSessions",textAlign: TextAlign.center)
+                                  ],
+                                ),
+                              ),
+                            ]
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 350.0,
+                      height: 250.0,
+                      child: PageView.builder(
+                        controller: controller,
+                        onPageChanged: (index){
+                          setState(() {
+                            currentIndex = index.toInt() % images.length.toInt();
+                          });
+                        },
+                          itemBuilder:(context,index){
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 1),
+                              child: SizedBox(
+                                height: 350,
+                                width: double.infinity,
+                                child: Image.network(
+                                    images[index%images.length],
+                                    fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          }
+                      )
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for(var i=0;i<images.length;++i) buildIndicator(currentIndex==i)
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30.sp,
                     )
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      for(var i=0;i<images.length;++i) buildIndicator(currentIndex==i)
-                    ],
-                  )
-                ])
+                  ])
+          ),
         )
 
     );
