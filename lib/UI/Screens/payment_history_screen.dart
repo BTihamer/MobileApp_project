@@ -14,7 +14,7 @@ class _PaymentHistoryState extends State<PaymentHistory>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("Payment History"),
+        title: const Text("Payment History"),
     centerTitle: true,
     backgroundColor: Colors.deepPurple,
     leading: const BackButton(
