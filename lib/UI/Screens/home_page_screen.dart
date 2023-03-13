@@ -2,6 +2,7 @@ import 'package:edzoteremappv2/UI/Screens/about_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/payment_history_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/profil_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/change_password_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/qrcode_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -193,7 +194,11 @@ class _HomePageState extends State<HomePage>{
                                       BorderRadius.all(Radius.circular(10))),
                                     child: IconButton(
                                       icon: Icon(Icons.qr_code),
-                                      onPressed: (){},
+                                      onPressed: (){
+                                        Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => const QRCodeScreen()),
+                                        );
+                                      },
                                     ),
                                   ),
                                 ),
