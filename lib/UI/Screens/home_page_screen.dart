@@ -5,6 +5,7 @@ import 'package:edzoteremappv2/UI/Screens/club_info_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/payment_history_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/profil_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/change_password_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/pt_sessions_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/trainers_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -441,7 +442,10 @@ class _HomePageState extends State<HomePage>{
                                               BorderRadius.all(Radius.circular(10))),
                                           child: IconButton(
                                             icon: Icon(Icons.access_time_outlined),
-                                            onPressed: (){},
+                                            onPressed: (){
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(builder: (context) => const PTSessionsScreen()));
+                                            },
                                           ),
                                         ),
                                       ),
