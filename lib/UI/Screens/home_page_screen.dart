@@ -1,5 +1,6 @@
 import 'package:edzoteremappv2/UI/Screens/about_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/capacity_status_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/club_info_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/payment_history_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/profil_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/change_password_screen.dart';
@@ -251,7 +252,11 @@ class _HomePageState extends State<HomePage>{
                                             BorderRadius.all(Radius.circular(10))),
                                         child: IconButton(
                                           icon: const Icon(Icons.location_on_outlined),
-                                          onPressed: (){},
+                                          onPressed: (){
+                                            Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => const ClubInfoScreen()),
+                                            );
+                                          },
                                         ),
                                       ),
                                     ),
