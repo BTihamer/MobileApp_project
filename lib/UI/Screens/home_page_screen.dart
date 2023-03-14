@@ -1,5 +1,6 @@
 import 'package:edzoteremappv2/UI/Screens/about_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/activate_voucher_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/your_membership_screen_yes.dart';
 import 'package:edzoteremappv2/UI/Screens/capacity_status_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/club_info_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/payment_history_screen.dart';
@@ -8,6 +9,7 @@ import 'package:edzoteremappv2/UI/Screens/change_password_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/pt_sessions_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/trainers_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/your_membership_screen_no.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -333,7 +335,15 @@ class _HomePageState extends State<HomePage>{
                                               BorderRadius.all(Radius.circular(10))),
                                           child: IconButton(
                                             icon: Icon(Icons.card_membership_sharp),
-                                            onPressed: (){},
+                                            onPressed: (){
+                                              bool van=true;
+                                              if(van==false){
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context) => const NoActiveMembershipScreen()));
+                                              }
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context) => const ActiveMembershipScreen()));
+                                            },
                                           ),
                                         ),
                                       ),
