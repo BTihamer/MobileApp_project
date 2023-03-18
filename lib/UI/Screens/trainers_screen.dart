@@ -1,3 +1,5 @@
+import 'package:edzoteremappv2/Models/trainer_class.dart';
+import 'package:edzoteremappv2/UI/Services/trainer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -8,6 +10,8 @@ class TrainersScreen extends StatefulWidget {
   State<TrainersScreen> createState() => _TrainersScreenState();
 }
 class _TrainersScreenState extends State<TrainersScreen> {
+  TrainerProvider trainerprov=TrainerProvider();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +31,7 @@ class _TrainersScreenState extends State<TrainersScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
-                  for(int i=0;i<5;++i) addGYM()
+                  for(int i=0;i<trainerprov.getTrainerListSize();++i) addTrainer(i)
                 ],
               ),
             ),
@@ -36,7 +40,8 @@ class _TrainersScreenState extends State<TrainersScreen> {
       ),
     );
   }
-  Padding addGYM(){
+  Padding addTrainer(int index){
+    Trainer trainer=trainerprov.getTrainderIndex(index);
     return Padding(
       padding: EdgeInsets.only(bottom: 10.sp),
       child: Container(
@@ -54,7 +59,7 @@ class _TrainersScreenState extends State<TrainersScreen> {
                 child: CircleAvatar(
                   backgroundColor: Colors.purple,
                   radius: 30.sp,
-                  child: const Icon(Icons.person),
+                  backgroundImage: NetworkImage(trainer.photourl),
                 ),
               ),
               Column(
@@ -63,32 +68,32 @@ class _TrainersScreenState extends State<TrainersScreen> {
                   Row(
                     children: [
                       Text("Name: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Nagy Janos",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(trainer.name,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                   Row(
                     children: [
                       Text("Location: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Toplita",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(trainer.location,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                   Row(
                     children: [
                       Text("Certified: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Level 1/online coach",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(trainer.certified,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                   Row(
                     children: [
                       Text("Contact: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("nagyjanos@gym5.ro",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(trainer.contact,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                       Text("Presentation:",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
                       SizedBox(
                         height: 18.h,
                           width: 65.w,
-                          child: Text("I care deeply about my clients,\n and there’s nothing of more value to me than helping somebody go through an experience that makes them happy, confident, and strong",textAlign:TextAlign.start,style:TextStyle(fontSize: 13.sp,color: Colors.white)))
+                          child: Text(trainer.presentation,textAlign:TextAlign.start,style:TextStyle(fontSize: 13.sp,color: Colors.white)))
                 ],
               )
             ],
