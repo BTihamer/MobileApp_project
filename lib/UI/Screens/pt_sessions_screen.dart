@@ -1,3 +1,5 @@
+import 'package:edzoteremappv2/Models/sessions_class.dart';
+import 'package:edzoteremappv2/UI/Services/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -8,7 +10,8 @@ class PTSessionsScreen extends StatefulWidget {
   State<PTSessionsScreen> createState() => _PTSessionsScreenState();
 }
 class _PTSessionsScreenState extends State<PTSessionsScreen> {
-
+  
+  SessionsProvider sessionsProv=SessionsProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +45,7 @@ class _PTSessionsScreenState extends State<PTSessionsScreen> {
                           alignment: Alignment.center,
                             child: Text("For personal training\n contact one of our trainers!",textAlign:TextAlign.center,style: TextStyle(fontSize: 18.sp,fontStyle: FontStyle.italic),))),
                   ),
-                  for(int i=0;i<3;++i) addSession()
+                  for(int i=0;i<sessionsProv.getSessionsnumber();++i) addSession(i)
                 ],
               ),
             ),
@@ -51,7 +54,8 @@ class _PTSessionsScreenState extends State<PTSessionsScreen> {
       ),
     );
   }
-  Padding addSession(){
+  Padding addSession(int index){
+    Session session=sessionsProv.getSessionbyindex(index);
     return Padding(
       padding: EdgeInsets.only(bottom: 10.sp),
       child: Container(
@@ -69,7 +73,7 @@ class _PTSessionsScreenState extends State<PTSessionsScreen> {
                 child: CircleAvatar(
                   backgroundColor: Colors.purple,
                   radius: 30.sp,
-                  child: Text("Toplita"),
+                  child: Text(session.city),
                 ),
               ),
               Column(
@@ -78,25 +82,25 @@ class _PTSessionsScreenState extends State<PTSessionsScreen> {
                   Row(
                     children: [
                       Text("Location: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Str.Stelelor 55",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(session.location,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                   Row(
                     children: [
                       Text("Shedule: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Monday-Friday\n 18:00-20:00",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(session.shedule,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                   Row(
                     children: [
                       Text("Type:",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Group,cardio",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(session.type,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                   Row(
                     children: [
                       Text("Trainers: ",style:TextStyle(fontSize: 13.sp,color: Colors.white54),),
-                      Text("Nagy Krisztina",style:TextStyle(fontSize: 13.sp,color: Colors.white),)
+                      Text(session.trainer,style:TextStyle(fontSize: 13.sp,color: Colors.white),)
                     ],
                   ),
                 ],

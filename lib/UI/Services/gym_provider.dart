@@ -16,7 +16,7 @@ class GymProvider{
       ),
       Gym(
         gymName: "5YM - Cluj",
-        location: "Str.Inelerol 5.",
+        location: "Str.Inelelor 5.",
         openBeetwin: "Open beetween 07:00-23:00",
         realtimeUsers: 46,
       ),
