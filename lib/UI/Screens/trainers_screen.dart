@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -8,7 +9,6 @@ class TrainersScreen extends StatefulWidget {
   State<TrainersScreen> createState() => _TrainersScreenState();
 }
 class _TrainersScreenState extends State<TrainersScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

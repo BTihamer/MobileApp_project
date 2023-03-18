@@ -12,6 +12,7 @@ import 'package:edzoteremappv2/UI/Screens/signin_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/trainers_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/your_membership_screen_no.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -22,6 +23,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage>{
+  FirebaseDatabase database=FirebaseDatabase.instance;
   int currentIndex=0;
   @override
   Widget build(BuildContext context) {
@@ -86,7 +88,8 @@ class _HomePageState extends State<HomePage>{
                 ),
                 dense: true,
                 visualDensity: const VisualDensity(vertical: 3),
-                onTap: () {},
+                onTap: () {
+                },
               ),
               ListTile(
                 leading:const Icon(Icons.history),

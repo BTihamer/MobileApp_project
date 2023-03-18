@@ -9,7 +9,7 @@ class ActiveMembershipScreen extends StatefulWidget {
   State<ActiveMembershipScreen> createState() => _ActiveMembershipScreenState();
 }
 class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
-  double hatralevonapok=10;
+  double daysleft=10;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +54,7 @@ class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
                     onChanged: (value) => print(value),
                     min: 0,
                     max: 30,
-                    value: hatralevonapok,
+                    value: daysleft,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
