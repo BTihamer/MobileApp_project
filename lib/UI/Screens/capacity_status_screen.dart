@@ -56,7 +56,7 @@ class _CapacityStatusScreenState extends State<CapacityStatusScreen> {
     }else if(edzoterem.realtimeUsers>50){
       circleColor=Colors.red.shade900;
       bgColor=Colors.red;
-      text="At the moment,...";
+      text="At the moment,this location\n is almost at capacity.There\n are only a few free spots left.";
     }
     return Padding(
       padding: EdgeInsets.only(bottom: 10.sp),
