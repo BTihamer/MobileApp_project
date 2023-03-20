@@ -22,12 +22,7 @@ class ClubInfoScreen extends StatelessWidget {
                       Container(
                         height: 35.h,
                         width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Colors.deepPurple,
-                          /*image: DecorationImage(
-                            image: AssetImage(),
-                                fit: BoxFit.fill,*/
-                          ),
+                        child: Image.network("https://i2-prod.gloucestershirelive.co.uk/whats-on/article886481.ece/ALTERNATES/s1227b/gym2PNG.png"),
                         ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
