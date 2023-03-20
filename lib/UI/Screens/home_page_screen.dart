@@ -1,5 +1,6 @@
 import 'package:edzoteremappv2/UI/Screens/about_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/activate_voucher_screen.dart';
+import 'package:edzoteremappv2/UI/Screens/membership_offers_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/your_membership_screen_yes.dart';
 import 'package:edzoteremappv2/UI/Screens/capacity_status_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/club_info_screen.dart';
@@ -315,7 +316,11 @@ class _HomePageState extends State<HomePage>{
                                             BorderRadius.all(Radius.circular(10))),
                                         child: IconButton(
                                           icon: Icon(Icons.card_membership),
-                                          onPressed: (){},
+                                          onPressed: (){
+                                            Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => const MembershipOffersScreen()),
+                                            );
+                                          },
                                         ),
                                       ),
                                     ),
