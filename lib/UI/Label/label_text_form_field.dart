@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class LabelTextFormField extends StatelessWidget {
   const LabelTextFormField({Key? key, required this.width, required this.label,required this.name,required this.obscure,required this.myController}) : super(key: key);
@@ -20,8 +19,8 @@ class LabelTextFormField extends StatelessWidget {
             obscureText: obscure,
             decoration: InputDecoration(
               label: Text(label),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(12.sp))
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12))
               ),
             ),
           )
