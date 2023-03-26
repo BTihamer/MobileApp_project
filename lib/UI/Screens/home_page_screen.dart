@@ -1,3 +1,4 @@
+import 'package:edzoteremappv2/Models/user_class.dart';
 import 'package:edzoteremappv2/UI/Screens/about_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/activate_voucher_screen.dart';
 import 'package:edzoteremappv2/UI/Screens/membership_offers_screen.dart';
@@ -15,6 +16,8 @@ import 'package:edzoteremappv2/UI/Screens/your_membership_screen_no.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -346,14 +349,20 @@ class _HomePageState extends State<HomePage>{
                                               BorderRadius.all(Radius.circular(10))),
                                           child: IconButton(
                                             icon: Icon(Icons.card_membership_sharp),
-                                            onPressed: (){
+                                            onPressed: ()async{
                                               bool van=true;
+                                              final CustomUser? user=await readUser();
+                                              if(user?.membership!="none"){
+                                                bool van=true;
+                                               }else{
+                                                 van=false;
+                                              }
                                               if(van==false){
                                                 Navigator.push(context,
-                                                    MaterialPageRoute(builder: (context) => const NoActiveMembershipScreen()));
+                                                    MaterialPageRoute(builder: (context) => NoActiveMembershipScreen()));
                                               }
                                                 Navigator.push(context,
-                                                    MaterialPageRoute(builder: (context) => const ActiveMembershipScreen()));
+                                                    MaterialPageRoute(builder: (context) => ActiveMembershipScreen(userDB: user,)));
                                             },
                                           ),
                                         ),
@@ -535,4 +544,12 @@ class _HomePageState extends State<HomePage>{
       ),
     );
   }
+Future<CustomUser?> readUser() async{
+     final docUser=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
+     final snapshot=await docUser.get();
+     if(snapshot.exists){
+       return CustomUser.fromJson(snapshot.data()!);
+     }
+     return CustomUser(name: "1", membership: "2", memb_date: DateTime.now());
+   }
 }

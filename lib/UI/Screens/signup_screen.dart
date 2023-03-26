@@ -64,7 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen>{
                       width: MediaQuery.of(context).size.width / 1.25,
                       label: "Confrim Password"),
                 ),
-                ElevatedButton(onPressed: (){
+                ElevatedButton(onPressed: ()async{
                   if(password.text==confirmPassword.text){
                     signUp();
                     Navigator.pop(context);
@@ -79,16 +79,11 @@ class _SignUpScreenState extends State<SignUpScreen>{
     );
   }
   Future signUp() async{
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) =>const Center (child: CircularProgressIndicator())
-    );
     try{
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text.trim(), password: password.text.trim());
     }on FirebaseAuthException catch (e){
       print(e);
     }
-    navigatorKey.currentState!.popUntil((route) =>route.isFirst);
+    Navigator.pop(context);
   }
 }

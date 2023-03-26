@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../Label/custom_imput_formater.dart';
 import '../Label/label_text_form_field.dart';
 
@@ -145,7 +146,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         ),
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                          new CustomInputFormatter()
+                          CustomInputFormatter()
                         ],
                       ),
                     )
@@ -178,7 +179,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 padding: EdgeInsets.only(top:5.sp,left: 50.sp),
                 child: Row(
                   children: [
-                    Text("Save your payment data for next time?"),
+                    const Text("Save your payment data for next time?"),
                     Checkbox(
                       checkColor: Colors.white,
                       fillColor: MaterialStateProperty.resolveWith(getColor),
@@ -193,11 +194,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
               InkWell(
-                onTap: (){
+                onTap: ()async {
                   if(isChecked==true&&saveData==true){
+                    await pay();
                     Navigator.pop(context);
                     Navigator.pop(context);
                   }else if(isChecked==true){
+                    await pay();
                     Navigator.pop(context);
                     Navigator.pop(context);
                   }
@@ -233,4 +236,30 @@ class _PaymentScreenState extends State<PaymentScreen> {
       ),
     );
   }
+  Future pay() async{
+    final docUser=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
+    DateTime ?now;
+    if(widget.membership_price=="189.99 RON"||widget.membership_price=="219.99 RON"){
+      now=DateTime.now().add(Duration(days: 30));
+    }else if(widget.membership_price=="1428.00 RON"){
+      //now.add(Duration(days: 360));
+      now=DateTime.now().add(Duration(days: 360));
+    }else if(widget.membership_price=="774.99 RON"){
+      //now.add(Duration(days: 180));
+      now=DateTime.now().add(Duration(days: 180));
+    }
+    if(saveData==true){
+      await docUser.update({
+        'membership':widget.membership_type,
+        'card_number':cardNumber.text.trim(),
+        'memb_date':now,
+
+      });
+    }else {
+      await docUser.update({
+        'membership': widget.membership_type,
+        'memb_date':now,
+      });
+    }
+}
 }

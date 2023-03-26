@@ -4,6 +4,7 @@ import 'package:edzoteremappv2/UI/Label/label_text_form_field.dart';
 import 'package:edzoteremappv2/UI/Screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class SignInScreen extends StatefulWidget {
@@ -62,7 +63,16 @@ class _SignInScreenState extends State<SignInScreen>{
               ElevatedButton(onPressed: ()async{
                 await signIn();
                 if(FirebaseAuth.instance.currentUser!=null){
+                  final docUser=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
+                  final snapshot=await docUser.get();
+                  if(snapshot.exists){
                   login();
+                  }
+                  else{
+                    await createUser();
+                    login();
+                  }
+
                 }
                 else{
                   openDialog();
@@ -103,6 +113,19 @@ class _SignInScreenState extends State<SignInScreen>{
       ],
     ),
   );
+
+  Future createUser()async{
+    final docUser=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
+    DateTime now=DateTime.now();
+    final json={
+      'name':"name",
+      'membership':"none",
+      "memb_date":now,
+      'card_number':"0",
+      "card_security":"0",
+    };
+    await docUser.set(json);
+  }
   Future signIn()async{
     showDialog(
         context: context,

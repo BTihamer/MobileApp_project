@@ -70,7 +70,7 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANDARD TG MURES")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANDARD TOPLITA")),
                     );
                   },
                   child: Container(
@@ -111,7 +111,7 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANTDARD CLUJ")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANDARD CLUJ")),
                     );
                   },
                   child: Container(
@@ -125,7 +125,7 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                           color: Colors.deepPurple,
                           child: Text("Fast and advantageous",style: TextStyle(fontSize: 15.sp,color: Colors.white),),
                         ),
-                        Text("STANTDARD CLUJ",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.bold),),
+                        Text("STANDARD CLUJ",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.bold),),
                         Row(
                             children:[
                               Text("189.99 RON/month",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.bold)),
