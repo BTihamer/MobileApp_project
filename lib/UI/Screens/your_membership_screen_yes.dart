@@ -16,31 +16,7 @@ class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
   double daysRemaining=0;
   @override
   void initState() {
-    if(widget.userDB?.membership=="STANDARD CLUJ"||widget.userDB?.membership=="STANDARD TG MURES"||widget.userDB?.membership=="STANDARD TOPLITA"||widget.userDB?.membership=="NATIONAL"){
-      days=30;
-      DateTime? now=DateTime.now();
-      daysRemaining=days-widget.userDB!.memb_date.difference(DateTime.now()).inDays.toDouble();
-      if(daysRemaining>25){
-        slider_color=Colors.red;
-      }
-    }else if(widget.userDB?.membership=="NATIONAL 12 months") {
-      days=360;
-      DateTime? now=DateTime.now();
-      daysRemaining=days+now.difference(widget.userDB!.memb_date).inDays.toDouble();
-      if(daysRemaining>355){
-        slider_color=Colors.red;
-      }
-    }else if(widget.userDB?.membership=="NATIONAL 6 months"){
-      days=180;
-      DateTime? now=DateTime.now();
-      daysRemaining=days+now.difference(widget.userDB!.memb_date).inDays.toDouble();
-      if(daysRemaining>175){
-        slider_color=Colors.red;
-      }
-    }
-    print(slider_color);
-    print("Days:$days");
-    print("Maradtnapok:$daysRemaining");
+    calcualte_slider();
     super.initState();
   }
   @override
@@ -108,5 +84,29 @@ class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
         ),
       ),
     );
+  }
+  void calcualte_slider(){
+    if(widget.userDB?.membership=="STANDARD CLUJ"||widget.userDB?.membership=="STANDARD TG MURES"||widget.userDB?.membership=="STANDARD TOPLITA"||widget.userDB?.membership=="NATIONAL"){
+      days=30;
+      DateTime? now=DateTime.now();
+      daysRemaining=days-widget.userDB!.memb_date.difference(DateTime.now()).inDays.toDouble();
+      if(daysRemaining>25){
+        slider_color=Colors.red;
+      }
+    }else if(widget.userDB?.membership=="NATIONAL 12 months") {
+      days=360;
+      DateTime? now=DateTime.now();
+      daysRemaining=days+now.difference(widget.userDB!.memb_date).inDays.toDouble();
+      if(daysRemaining>355){
+        slider_color=Colors.red;
+      }
+    }else if(widget.userDB?.membership=="NATIONAL 6 months"){
+      days=180;
+      DateTime? now=DateTime.now();
+      daysRemaining=days+now.difference(widget.userDB!.memb_date).inDays.toDouble();
+      if(daysRemaining>175){
+        slider_color=Colors.red;
+      }
+    }
   }
 }
