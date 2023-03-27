@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class PaymentHistory extends StatefulWidget {
   const PaymentHistory({Key? key}) : super(key: key);
@@ -77,7 +76,7 @@ class _PaymentHistoryState extends State<PaymentHistory>{
     );
   }
   DataRow addRow(){
-    return  DataRow(cells: [
+    return  const DataRow(cells: [
       DataCell(Text('15321313')),
       DataCell(Text('2023/03/11')),
       DataCell(Text('30day')),

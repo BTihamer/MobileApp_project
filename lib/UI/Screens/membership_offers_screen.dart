@@ -29,10 +29,10 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANDARD TG MURES")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membershipPrice:"189.99 RON",membershipType:"STANDARD TG MURES")),
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 17.h,
                     width: double.infinity,
                     child: Column(
@@ -70,10 +70,10 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANDARD TOPLITA")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membershipPrice:"189.99 RON",membershipType:"STANDARD TOPLITA")),
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 17.h,
                     width: double.infinity,
                     child: Column(
@@ -111,10 +111,10 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"189.99 RON",membership_type:"STANDARD CLUJ")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membershipPrice:"189.99 RON",membershipType:"STANDARD CLUJ")),
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 17.h,
                     width: double.infinity,
                     child: Column(
@@ -152,10 +152,10 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"219.99 RON",membership_type:"NATIONAL")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membershipPrice:"219.99 RON",membershipType:"NATIONAL")),
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 17.h,
                     width: double.infinity,
                     child: Column(
@@ -193,10 +193,10 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"1428.00 RON",membership_type:"NATIONAL 12 months")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membershipPrice:"1428.00 RON",membershipType:"NATIONAL 12 months")),
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 17.h,
                     width: double.infinity,
                     child: Column(
@@ -234,10 +234,10 @@ class _MembershipOffersScreenState extends State<MembershipOffersScreen> {
                 child: InkWell(
                   onTap: (){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaymentScreen(membership_price:"774.99 RON",membership_type:"NATIONAL 6 months")),
+                      MaterialPageRoute(builder: (context) => const PaymentScreen(membershipPrice:"774.99 RON",membershipType:"NATIONAL 6 months")),
                     );
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 17.h,
                     width: double.infinity,
                     child: Column(

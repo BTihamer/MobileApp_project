@@ -73,24 +73,12 @@ class _HomePageState extends State<HomePage>{
                 ),
                 dense: true,
                   visualDensity: const VisualDensity(vertical: 3),
-                onTap: () {
+                onTap: () async{
+                  final CustomUser? user=await readUser();
                   Navigator.pop(context);
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ProfilScreen()),
+                    MaterialPageRoute(builder: (context) => ProfilScreen(userDB: user)),
                   );
-                },
-              ),
-              ListTile(
-                leading:const Icon(Icons.settings),
-                title: const Text('Personal Info',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontStyle: FontStyle.italic
-                  ),
-                ),
-                dense: true,
-                visualDensity: const VisualDensity(vertical: 3),
-                onTap: () {
                 },
               ),
               ListTile(
@@ -136,7 +124,7 @@ class _HomePageState extends State<HomePage>{
                 )
                 ),
                 dense: true,
-                visualDensity: VisualDensity(vertical: 3),
+                visualDensity: const VisualDensity(vertical: 3),
                 onTap: () {
                   FirebaseAuth.instance.signOut();
                   Navigator.pop(context);
@@ -155,7 +143,7 @@ class _HomePageState extends State<HomePage>{
                     )
                 ),
                 dense: true,
-                visualDensity: VisualDensity(vertical: 3),
+                visualDensity: const VisualDensity(vertical: 3),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(context,
@@ -187,7 +175,7 @@ class _HomePageState extends State<HomePage>{
                             border: Border.all(color: Colors.deepPurple),
                             color: Colors.white70,
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10))),
+                            const BorderRadius.all(Radius.circular(10))),
                         child: Row(
                           children: [
                             Column(
@@ -203,9 +191,9 @@ class _HomePageState extends State<HomePage>{
                                       border: Border.all(color: Colors.deepPurple),
                                       color: Colors.deepPurple,
                                       borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
+                                      const BorderRadius.all(Radius.circular(10))),
                                     child: IconButton(
-                                      icon: Icon(Icons.qr_code),
+                                      icon: const Icon(Icons.qr_code),
                                       onPressed: (){
                                         Navigator.push(context,
                                           MaterialPageRoute(builder: (context) => const QRCodeScreen()),
@@ -215,7 +203,7 @@ class _HomePageState extends State<HomePage>{
                                   ),
                                 ),
                           ),
-                                Text("Member\ncard",textAlign: TextAlign.center)
+                                const Text("Member\ncard",textAlign: TextAlign.center)
                               ],
                             ),
                             Padding(
@@ -233,9 +221,9 @@ class _HomePageState extends State<HomePage>{
                                             border: Border.all(color: Colors.deepPurple),
                                             color: Colors.deepPurple,
                                             borderRadius:
-                                            BorderRadius.all(Radius.circular(10))),
+                                            const BorderRadius.all(Radius.circular(10))),
                                         child: IconButton(
-                                          icon: Icon(Icons.info_outline_rounded),
+                                          icon: const Icon(Icons.info_outline_rounded),
                                           onPressed: (){
                                             Navigator.push(context,
                                               MaterialPageRoute(builder: (context) => const CapacityStatusScreen()),
@@ -245,7 +233,7 @@ class _HomePageState extends State<HomePage>{
                                       ),
                                     ),
                                   ),
-                                  Text("Capacity\nStatus",textAlign: TextAlign.center)
+                                  const Text("Capacity\nStatus",textAlign: TextAlign.center)
                                 ],
                               ),
                             ),
@@ -264,7 +252,7 @@ class _HomePageState extends State<HomePage>{
                                             border: Border.all(color: Colors.deepPurple),
                                             color: Colors.deepPurple,
                                             borderRadius:
-                                            BorderRadius.all(Radius.circular(10))),
+                                            const BorderRadius.all(Radius.circular(10))),
                                         child: IconButton(
                                           icon: const Icon(Icons.location_on_outlined),
                                           onPressed: (){
@@ -300,7 +288,7 @@ class _HomePageState extends State<HomePage>{
                             border: Border.all(color: Colors.deepPurple),
                             color: Colors.white70,
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10))),
+                            const BorderRadius.all(Radius.circular(10))),
                         child: Row(
                             children: [
                               Column(
@@ -316,9 +304,9 @@ class _HomePageState extends State<HomePage>{
                                             border: Border.all(color: Colors.deepPurple),
                                             color: Colors.deepPurple,
                                             borderRadius:
-                                            BorderRadius.all(Radius.circular(10))),
+                                            const BorderRadius.all(Radius.circular(10))),
                                         child: IconButton(
-                                          icon: Icon(Icons.card_membership),
+                                          icon: const Icon(Icons.card_membership),
                                           onPressed: (){
                                             Navigator.push(context,
                                               MaterialPageRoute(builder: (context) => const MembershipOffersScreen()),
@@ -328,7 +316,7 @@ class _HomePageState extends State<HomePage>{
                                       ),
                                     ),
                                   ),
-                                  Text("Buy\nMembership",textAlign: TextAlign.center)
+                                  const Text("Buy\nMembership",textAlign: TextAlign.center)
                                 ],
                               ),
                               Padding(
@@ -346,20 +334,20 @@ class _HomePageState extends State<HomePage>{
                                               border: Border.all(color: Colors.deepPurple),
                                               color: Colors.deepPurple,
                                               borderRadius:
-                                              BorderRadius.all(Radius.circular(10))),
+                                              const BorderRadius.all(Radius.circular(10))),
                                           child: IconButton(
-                                            icon: Icon(Icons.card_membership_sharp),
+                                            icon: const Icon(Icons.card_membership_sharp),
                                             onPressed: ()async{
                                               bool van=true;
                                               final CustomUser? user=await readUser();
                                               if(user?.membership!="none"){
-                                                bool van=true;
+                                                van=true;
                                                }else{
                                                  van=false;
                                               }
                                               if(van==false){
                                                 Navigator.push(context,
-                                                    MaterialPageRoute(builder: (context) => NoActiveMembershipScreen()));
+                                                    MaterialPageRoute(builder: (context) => const NoActiveMembershipScreen()));
                                               }
                                                 Navigator.push(context,
                                                     MaterialPageRoute(builder: (context) => ActiveMembershipScreen(userDB: user,)));
@@ -368,7 +356,7 @@ class _HomePageState extends State<HomePage>{
                                         ),
                                       ),
                                     ),
-                                    Text("Your\nMembership",textAlign: TextAlign.center)
+                                    const Text("Your\nMembership",textAlign: TextAlign.center)
                                   ],
                                 ),
                               ),
@@ -387,7 +375,7 @@ class _HomePageState extends State<HomePage>{
                                               border: Border.all(color: Colors.deepPurple),
                                               color: Colors.deepPurple,
                                               borderRadius:
-                                              BorderRadius.all(Radius.circular(10))),
+                                              const BorderRadius.all(Radius.circular(10))),
                                           child: IconButton(
                                             icon: const Icon(Icons.location_on_outlined),
                                             onPressed: (){
@@ -423,7 +411,7 @@ class _HomePageState extends State<HomePage>{
                             border: Border.all(color: Colors.deepPurple),
                             color: Colors.white70,
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10))),
+                            const BorderRadius.all(Radius.circular(10))),
                         child: Row(
                             children: [
                               Column(
@@ -439,9 +427,9 @@ class _HomePageState extends State<HomePage>{
                                             border: Border.all(color: Colors.deepPurple),
                                             color: Colors.deepPurple,
                                             borderRadius:
-                                            BorderRadius.all(Radius.circular(10))),
+                                            const BorderRadius.all(Radius.circular(10))),
                                         child: IconButton(
-                                          icon: Icon(Icons.person_3_rounded),
+                                          icon: const Icon(Icons.person_3_rounded),
                                           onPressed: (){
                                             Navigator.push(context,
                                               MaterialPageRoute(builder: (context) => const TrainersScreen()),
@@ -451,7 +439,7 @@ class _HomePageState extends State<HomePage>{
                                       ),
                                     ),
                                   ),
-                                  Text("Our\nTrainers",textAlign: TextAlign.center)
+                                  const Text("Our\nTrainers",textAlign: TextAlign.center)
                                 ],
                               ),
                               Padding(
@@ -469,9 +457,9 @@ class _HomePageState extends State<HomePage>{
                                               border: Border.all(color: Colors.deepPurple),
                                               color: Colors.deepPurple,
                                               borderRadius:
-                                              BorderRadius.all(Radius.circular(10))),
+                                              const BorderRadius.all(Radius.circular(10))),
                                           child: IconButton(
-                                            icon: Icon(Icons.access_time_outlined),
+                                            icon: const Icon(Icons.access_time_outlined),
                                             onPressed: (){
                                               Navigator.push(context,
                                                   MaterialPageRoute(builder: (context) => const PTSessionsScreen()));
@@ -480,7 +468,7 @@ class _HomePageState extends State<HomePage>{
                                         ),
                                       ),
                                     ),
-                                    Text("PT\nSessions",textAlign: TextAlign.center)
+                                    const Text("PT\nSessions",textAlign: TextAlign.center)
                                   ],
                                 ),
                               ),

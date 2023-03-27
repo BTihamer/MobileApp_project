@@ -13,7 +13,7 @@ class CapacityStatusScreen extends StatefulWidget {
 class _CapacityStatusScreenState extends State<CapacityStatusScreen> {
   Color bgColor=Colors.green;
   Color circleColor=Colors.green.shade900;
-  GymProvider gymProv=new GymProvider();
+  GymProvider gymProv=GymProvider();
   String text="";
   @override
   Widget build(BuildContext context) {

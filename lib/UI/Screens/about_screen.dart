@@ -13,7 +13,7 @@ class _AboutScreenState extends State<AboutScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("About"),
+          title: const Text("About"),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         leading: const BackButton(
@@ -41,7 +41,7 @@ class _AboutScreenState extends State<AboutScreen>{
               SizedBox(
                 width: double.infinity,
                 height: 5.h,
-                child: Align(
+                child: const Align(
                   alignment: Alignment.center,
                   child: Text(
                     "GYM-5 Version: 1.18.0.1",style:TextStyle(

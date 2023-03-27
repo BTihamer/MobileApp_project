@@ -19,7 +19,7 @@ class ClubInfoScreen extends StatelessWidget {
           child: SafeArea(
               child: Column(
                   children: [
-                      Container(
+                      SizedBox(
                         height: 35.h,
                         width: double.infinity,
                         child: Image.network("https://i2-prod.gloucestershirelive.co.uk/whats-on/article886481.ece/ALTERNATES/s1227b/gym2PNG.png"),

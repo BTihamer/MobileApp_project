@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class ActiveMembershipScreen extends StatefulWidget {
-  ActiveMembershipScreen({Key? key,required this.userDB}) : super(key: key);
+  const ActiveMembershipScreen({Key? key,required this.userDB}) : super(key: key);
 
-  CustomUser? userDB;
+  final CustomUser? userDB;
   @override
   State<ActiveMembershipScreen> createState() => _ActiveMembershipScreenState();
 }
 class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
-  Color slider_color=Colors.white;
+  Color sliderColor=Colors.white;
   double days=0;
   double daysRemaining=0;
   @override
   void initState() {
-    calcualte_slider();
+    calculateSlider();
     super.initState();
   }
   @override
@@ -58,7 +58,7 @@ class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
                     height: 40.sp
                   ),
                   Slider(
-                    activeColor: slider_color,
+                    activeColor: sliderColor,
                     onChanged: (value) => print(value),
                     min: 0,
                     max: days,
@@ -85,27 +85,26 @@ class _ActiveMembershipScreenState extends State<ActiveMembershipScreen> {
       ),
     );
   }
-  void calcualte_slider(){
+  void calculateSlider(){
     if(widget.userDB?.membership=="STANDARD CLUJ"||widget.userDB?.membership=="STANDARD TG MURES"||widget.userDB?.membership=="STANDARD TOPLITA"||widget.userDB?.membership=="NATIONAL"){
       days=30;
-      DateTime? now=DateTime.now();
       daysRemaining=days-widget.userDB!.memb_date.difference(DateTime.now()).inDays.toDouble();
       if(daysRemaining>25){
-        slider_color=Colors.red;
+        sliderColor=Colors.red;
       }
     }else if(widget.userDB?.membership=="NATIONAL 12 months") {
       days=360;
       DateTime? now=DateTime.now();
       daysRemaining=days+now.difference(widget.userDB!.memb_date).inDays.toDouble();
       if(daysRemaining>355){
-        slider_color=Colors.red;
+        sliderColor=Colors.red;
       }
     }else if(widget.userDB?.membership=="NATIONAL 6 months"){
       days=180;
       DateTime? now=DateTime.now();
       daysRemaining=days+now.difference(widget.userDB!.memb_date).inDays.toDouble();
       if(daysRemaining>175){
-        slider_color=Colors.red;
+        sliderColor=Colors.red;
       }
     }
   }

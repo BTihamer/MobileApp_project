@@ -7,10 +7,10 @@ import '../Label/custom_imput_formater.dart';
 import '../Label/label_text_form_field.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({Key? key,required this.membership_price,required this.membership_type}) : super(key: key);
+  const PaymentScreen({Key? key,required this.membershipPrice,required this.membershipType}) : super(key: key);
 
-  final String membership_price;
-  final String membership_type;
+  final String membershipPrice;
+  final String membershipType;
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
@@ -62,7 +62,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
               Text(
-                widget.membership_type,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.sp
+                widget.membershipType,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.sp
               ),
               ),
               Container(
@@ -81,7 +81,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 5.sp,bottom: 5.sp),
-                child: Container(
+                child: SizedBox(
                   width: 90.w,
                   height: 10.h,
                   child: Row(
@@ -92,7 +92,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           style: TextStyle(color: Colors.black,fontSize: 13.sp),
                           children: <TextSpan>[
                             TextSpan(
-                              text: widget.membership_price,
+                              text: widget.membershipPrice,
                               style: TextStyle(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.bold,
@@ -138,14 +138,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       child: TextFormField(
                         controller: cardNumber,
                         obscureText: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           label: Text("Card Number"),
-                          border: const OutlineInputBorder(
+                          border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(12))
                           ),
                         ),
                         inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                          FilteringTextInputFormatter.allow(RegExp(r'\d')),
                           CustomInputFormatter()
                         ],
                       ),
@@ -223,7 +223,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         children: [
                           Icon(Icons.lock,size: 20.sp,color: Colors.white,),
                           Text("Pay ",style: TextStyle(fontSize: 20.sp,color: Colors.white),),
-                          Text(widget.membership_price,style: TextStyle(fontSize: 20.sp,color: Colors.white),),
+                          Text(widget.membershipPrice,style: TextStyle(fontSize: 20.sp,color: Colors.white),),
                         ],
                       ),
                     ),
@@ -239,25 +239,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Future pay() async{
     final docUser=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
     DateTime ?now;
-    if(widget.membership_price=="189.99 RON"||widget.membership_price=="219.99 RON"){
-      now=DateTime.now().add(Duration(days: 30));
-    }else if(widget.membership_price=="1428.00 RON"){
+    if(widget.membershipPrice=="189.99 RON"||widget.membershipPrice=="219.99 RON"){
+      now=DateTime.now().add(const Duration(days: 30));
+    }else if(widget.membershipPrice=="1428.00 RON"){
       //now.add(Duration(days: 360));
-      now=DateTime.now().add(Duration(days: 360));
-    }else if(widget.membership_price=="774.99 RON"){
+      now=DateTime.now().add(const Duration(days: 360));
+    }else if(widget.membershipPrice=="774.99 RON"){
       //now.add(Duration(days: 180));
-      now=DateTime.now().add(Duration(days: 180));
+      now=DateTime.now().add(const Duration(days: 180));
     }
     if(saveData==true){
       await docUser.update({
-        'membership':widget.membership_type,
+        'membership':widget.membershipType,
         'card_number':cardNumber.text.trim(),
+        'card_security':securityCode.text.trim(),
         'memb_date':now,
 
       });
     }else {
       await docUser.update({
-        'membership': widget.membership_type,
+        'membership': widget.membershipType,
         'memb_date':now,
       });
     }
