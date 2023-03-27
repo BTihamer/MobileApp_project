@@ -22,6 +22,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   final cardNumber=TextEditingController();
   final expiryDate=TextEditingController();
   final securityCode=TextEditingController();
+  final userDB=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
   final snackBar = const SnackBar(
     content: Text('Choose your payment option'),
   );

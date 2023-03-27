@@ -340,17 +340,21 @@ class _HomePageState extends State<HomePage>{
                                             onPressed: ()async{
                                               bool van=true;
                                               final CustomUser? user=await readUser();
-                                              if(user?.membership!="none"){
-                                                van=true;
+                                              if(user?.membership=="none"){
+                                                van=false;
                                                }else{
-                                                 van=false;
+                                                 van=true;
                                               }
                                               if(van==false){
                                                 Navigator.push(context,
                                                     MaterialPageRoute(builder: (context) => const NoActiveMembershipScreen()));
-                                              }
+                                              }else {
                                                 Navigator.push(context,
-                                                    MaterialPageRoute(builder: (context) => ActiveMembershipScreen(userDB: user,)));
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ActiveMembershipScreen(
+                                                              userDB: user,)));
+                                              }
                                             },
                                           ),
                                         ),

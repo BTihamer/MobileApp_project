@@ -12,7 +12,13 @@ class ProfilScreen extends StatefulWidget {
 }
 class _ProfilScreenState extends State<ProfilScreen>{
   TextEditingController controller=TextEditingController();
+  String? name;
   List<String> images=["https://toppng.com/uploads/preview/file-save-money-icon-115630905330r1k6kmskb.png"];
+  @override
+  void initState() {
+    name=widget.userDB?.name;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +42,7 @@ class _ProfilScreenState extends State<ProfilScreen>{
                   ),
                 ),
                 Center(
-                  child: Text('${widget.userDB?.name}',textAlign:TextAlign.center,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 27,)),
+                  child: Text('${name}',textAlign:TextAlign.center,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 27,)),
                 ),
                 Container(
                   width: 95.w,
@@ -111,7 +117,7 @@ class _ProfilScreenState extends State<ProfilScreen>{
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left:10.sp),
-                      child: Text('Name:'+'${widget.userDB?.name}',style: TextStyle(fontSize: 15.sp),),
+                      child: Text('Name:'+'${name}',style: TextStyle(fontSize: 15.sp),),
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 10.sp),
@@ -261,6 +267,9 @@ class _ProfilScreenState extends State<ProfilScreen>{
               final docUser=FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid.toString());
               await docUser.update({
                 'name':controller.text,
+              });
+              setState(() {
+                name=widget.userDB?.name;
               });
               Navigator.pop(context);
             });
